@@ -1,21 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { WeddingConfig } from '../config/weddingData';
-import { Volume2, VolumeX, MailOpen, SlidersHorizontal, X } from 'lucide-react';
+import { Volume2, VolumeX, MailOpen, X } from 'lucide-react';
 import { BotanicalCorner, FloralDivider } from './BotanicalElements';
 
 interface NavbarProps {
   config: WeddingConfig;
   isPlayingMusic: boolean;
   onToggleMusic: () => void;
-  onOpenCustomizer: () => void;
   onReopenEnvelope: () => void;
+  onOpenCustomizer?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   config,
   isPlayingMusic,
   onToggleMusic,
-  onOpenCustomizer,
   onReopenEnvelope,
 }) => {
   const [scrolled, setScrolled] = useState(false);
@@ -113,16 +112,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               )}
             </button>
 
-            {/* Quick Customizer toggle (desktop) */}
-            <button
-              onClick={onOpenCustomizer}
-              title="Customize couple details & date"
-              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 text-xs text-[#6C5E4E] hover:text-[#3E342B] bg-[#FFFDF9] border border-[#C5A059]/30 rounded-lg hover:border-[#C5A059] transition-all"
-            >
-              <SlidersHorizontal className="w-3.5 h-3.5 text-[#B58D3D]" />
-              <span className="whitespace-nowrap">Customize</span>
-            </button>
-
             {/* Primary Action Button: RSVP (desktop) */}
             <a
               href="#rsvp"
@@ -212,27 +201,16 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
 
           {/* Footer Controls in mobile menu */}
-          <div className="pt-4 border-t border-[#E8DCCF] flex items-center justify-between text-xs text-[#6C5E4E]">
+          <div className="pt-4 border-t border-[#E8DCCF] flex items-center justify-center text-xs text-[#6C5E4E]">
             <button
               onClick={() => {
                 closeMenu();
                 onReopenEnvelope();
               }}
-              className="inline-flex items-center gap-1.5 py-2 px-3 bg-white border border-[#DFC488]/40 rounded-lg text-xs"
+              className="inline-flex items-center gap-1.5 py-2 px-4 bg-white border border-[#DFC488]/40 rounded-lg text-xs hover:bg-[#FAF7F2] transition-colors"
             >
               <MailOpen className="w-3.5 h-3.5 text-[#B58D3D]" />
-              <span>Invitation Card</span>
-            </button>
-
-            <button
-              onClick={() => {
-                closeMenu();
-                onOpenCustomizer();
-              }}
-              className="inline-flex items-center gap-1.5 py-2 px-3 bg-white border border-[#DFC488]/40 rounded-lg text-xs"
-            >
-              <SlidersHorizontal className="w-3.5 h-3.5 text-[#B58D3D]" />
-              <span>Customize</span>
+              <span>View Invitation Card</span>
             </button>
           </div>
         </div>

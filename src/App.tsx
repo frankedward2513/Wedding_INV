@@ -19,13 +19,12 @@ import { RsvpSection } from './components/RsvpSection';
 import { GiftGuideSection } from './components/GiftGuideSection';
 import { FooterSection } from './components/FooterSection';
 import { AudioPlayerWidget } from './components/AudioPlayerWidget';
-import { CustomizationModal } from './components/CustomizationModal';
 
 const CONFIG_STORAGE_KEY = 'aura_bloom_wedding_config_manila_v1';
 
 export default function App() {
   // Main wedding configuration state with local storage persistence
-  const [config, setConfig] = useState<WeddingConfig>(() => {
+  const [config] = useState<WeddingConfig>(() => {
     try {
       const stored = localStorage.getItem(CONFIG_STORAGE_KEY);
       if (stored) {
@@ -51,9 +50,6 @@ export default function App() {
   // Floating particles (petals & butterflies) enabled state
   const [particlesEnabled, setParticlesEnabled] = useState<boolean>(true);
 
-  // Customizer modal open state
-  const [customizerOpen, setCustomizerOpen] = useState<boolean>(false);
-
   // Toggle music playback
   const handleToggleMusic = () => {
     if (isPlayingMusic) {
@@ -74,26 +70,6 @@ export default function App() {
 
   const handleVolumeChange = (vol: number) => {
     romanticAudio.setVolume(vol);
-  };
-
-  // Save customized configuration
-  const handleSaveConfig = (updated: WeddingConfig) => {
-    setConfig(updated);
-    try {
-      localStorage.setItem(CONFIG_STORAGE_KEY, JSON.stringify(updated));
-    } catch {
-      // ignore
-    }
-  };
-
-  // Reset to original default configuration
-  const handleResetDefaults = () => {
-    setConfig(initialWeddingConfig);
-    try {
-      localStorage.removeItem(CONFIG_STORAGE_KEY);
-    } catch {
-      // ignore
-    }
   };
 
   // Respect prefers-reduced-motion
@@ -120,7 +96,6 @@ export default function App() {
         config={config}
         isPlayingMusic={isPlayingMusic}
         onToggleMusic={handleToggleMusic}
-        onOpenCustomizer={() => setCustomizerOpen(true)}
         onReopenEnvelope={() => setHasOpenedEnvelope(false)}
       />
 
@@ -163,15 +138,6 @@ export default function App() {
         isPlaying={isPlayingMusic}
         onTogglePlay={handleToggleMusic}
         onVolumeChange={handleVolumeChange}
-      />
-
-      {/* 7. Live Invitation Customizer Modal */}
-      <CustomizationModal
-        isOpen={customizerOpen}
-        onClose={() => setCustomizerOpen(false)}
-        config={config}
-        onSaveConfig={handleSaveConfig}
-        onResetDefaults={handleResetDefaults}
       />
     </div>
   );
