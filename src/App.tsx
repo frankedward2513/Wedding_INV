@@ -21,7 +21,7 @@ import { FooterSection } from './components/FooterSection';
 import { AudioPlayerWidget } from './components/AudioPlayerWidget';
 import { CustomizationModal } from './components/CustomizationModal';
 
-const CONFIG_STORAGE_KEY = 'aura_bloom_wedding_config';
+const CONFIG_STORAGE_KEY = 'aura_bloom_wedding_config_manila_v1';
 
 export default function App() {
   // Main wedding configuration state with local storage persistence
@@ -29,7 +29,12 @@ export default function App() {
     try {
       const stored = localStorage.getItem(CONFIG_STORAGE_KEY);
       if (stored) {
-        return JSON.parse(stored);
+        const parsed = JSON.parse(stored);
+        // Ensure not using old California defaults
+        if (parsed?.venues?.ceremony?.cityState?.includes('Carmel')) {
+          return initialWeddingConfig;
+        }
+        return parsed;
       }
     } catch {
       // fallback to initial
