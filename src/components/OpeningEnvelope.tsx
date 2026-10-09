@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { WeddingConfig } from '../config/weddingData';
 import { Butterfly, BotanicalCorner } from './BotanicalElements';
-import { Sparkles, ArrowRight } from 'lucide-react';
+import { Heart, ArrowRight } from 'lucide-react';
 
 interface OpeningEnvelopeProps {
   config: WeddingConfig;
@@ -273,7 +273,7 @@ export const OpeningEnvelope: React.FC<OpeningEnvelopeProps> = ({
             onClick={handleOpen}
             className="group inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#FAF7F2] hover:bg-white text-[#5C4D3E] border border-[#C5A059]/40 shadow-md transition-all hover:shadow-lg active:scale-95"
           >
-            <Sparkles className="w-4 h-4 text-[#C5A059] group-hover:rotate-12 transition-transform" />
+            <Heart className="w-4 h-4 text-[#B58D3D] fill-[#EED7CF] group-hover:scale-110 transition-transform" />
             <span className="text-xs uppercase tracking-[0.2em] font-semibold text-[#5C4D3E]">
               {stage === 'sealed' ? 'Tap to Open Our Invitation' : 'Opening Invitation...'}
             </span>

@@ -2,7 +2,7 @@ import React from 'react';
 import { WeddingConfig } from '../config/weddingData';
 import { BotanicalCorner, FloralDivider } from './BotanicalElements';
 import { ScrollReveal } from './ScrollReveal';
-import { Sparkles, AlertCircle, Camera, Clock, Heart, Users } from 'lucide-react';
+import { Sparkles, Camera, Clock, Heart, Users } from 'lucide-react';
 
 interface DressCodeSectionProps {
   config: WeddingConfig;
@@ -98,18 +98,15 @@ export const DressCodeSection: React.FC<DressCodeSectionProps> = ({ config }) =>
               </div>
 
               {/* Colors to Avoid Notice */}
-              <div className="mt-8 p-4 bg-[#FBEFEF]/70 border border-[#EAC5C5] rounded-xl max-w-2xl mx-auto text-left flex items-start gap-3">
-                <AlertCircle className="w-5 h-5 text-[#B85450] shrink-0 mt-0.5" />
-                <div>
-                  <span className="text-xs uppercase tracking-wider font-semibold text-[#8B3632] block">
-                    Kindly Note: Colors to Avoid
-                  </span>
-                  <ul className="text-xs text-[#6B3230] mt-1 space-y-0.5 list-disc list-inside">
-                    {dressCode.colorsToAvoid.map((color, idx) => (
-                      <li key={idx}>{color}</li>
-                    ))}
-                  </ul>
-                </div>
+              <div className="mt-8 p-4 bg-[#FBEFEF]/70 border border-[#EAC5C5] rounded-xl max-w-2xl mx-auto text-left">
+                <span className="text-xs uppercase tracking-wider font-semibold text-[#8B3632] block">
+                  Kindly Note: Colors to Avoid
+                </span>
+                <ul className="text-xs text-[#6B3230] mt-1 space-y-0.5 list-disc list-inside">
+                  {dressCode.colorsToAvoid.map((color, idx) => (
+                    <li key={idx}>{color}</li>
+                  ))}
+                </ul>
               </div>
             </div>
 
