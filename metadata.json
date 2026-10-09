@@ -1,0 +1,6 @@
+{
+  "name": "Aura & Bloom - Digital Wedding Invitation",
+  "description": "An elegant, interactive digital wedding invitation featuring realistic 3D envelope opening, romantic floral effects, fluttering butterflies, live countdown, entourage, dress code, photo gallery, and interactive RSVP.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
