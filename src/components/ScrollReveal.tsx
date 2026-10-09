@@ -17,9 +17,9 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
   className = '',
   delay = 0,
   direction = 'up',
-  distance = 36,
-  duration = 0.9,
-  threshold = 0.15,
+  distance = 50,
+  duration = 1.0,
+  threshold = 0.08,
   once = true,
   style = {},
 }) => {
@@ -52,7 +52,8 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
       },
       {
         threshold,
-        rootMargin: '0px 0px -40px 0px', // trigger slightly before it hits the bottom
+        // Wait until element has scrolled at least 60px into view before triggering
+        rootMargin: '0px 0px -60px 0px',
       }
     );
 
@@ -65,18 +66,18 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
 
   // Calculate transform based on direction
   const getTransform = () => {
-    if (isVisible) return 'translate3d(0, 0, 0) scale(1)';
+    if (isVisible) return 'translate3d(0, 0, 0)';
     switch (direction) {
       case 'up':
-        return `translate3d(0, ${distance}px, 0) scale(0.98)`;
+        return `translate3d(0, ${distance}px, 0)`;
       case 'down':
-        return `translate3d(0, -${distance}px, 0) scale(0.98)`;
+        return `translate3d(0, -${distance}px, 0)`;
       case 'left':
-        return `translate3d(${distance}px, 0, 0) scale(0.98)`;
+        return `translate3d(${distance}px, 0, 0)`;
       case 'right':
-        return `translate3d(-${distance}px, 0, 0) scale(0.98)`;
+        return `translate3d(-${distance}px, 0, 0)`;
       case 'none':
-        return 'translate3d(0, 0, 0) scale(0.98)';
+        return 'translate3d(0, 0, 0)';
       default:
         return `translate3d(0, ${distance}px, 0)`;
     }
@@ -89,7 +90,7 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
       style={{
         opacity: isVisible ? 1 : 0,
         transform: getTransform(),
-        transition: `opacity ${duration}s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms, transform ${duration}s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms`,
+        transition: `opacity ${duration}s cubic-bezier(0.21, 1, 0.35, 1) ${delay}ms, transform ${duration}s cubic-bezier(0.21, 1, 0.35, 1) ${delay}ms`,
         willChange: 'opacity, transform',
         ...style,
       }}

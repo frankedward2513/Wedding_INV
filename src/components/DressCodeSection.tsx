@@ -65,87 +65,91 @@ export const DressCodeSection: React.FC<DressCodeSectionProps> = ({ config }) =>
             </div>
 
             {/* Color Palette Swatches */}
-            <div className="py-10 border-b border-[#E8DCCF]/60 text-center">
-              <div className="flex items-center justify-center gap-2 mb-2">
-                <Sparkles className="w-4 h-4 text-[#B58D3D]" />
-                <span className="text-xs uppercase tracking-[0.25em] text-[#B58D3D] font-semibold">
-                  Suggested Color Palette
-                </span>
-              </div>
-              <p className="text-xs text-[#7A6E5F] max-w-md mx-auto mb-6">
-                We encourage muted botanicals, soft pastels, and champagne tones to harmonize with the garden setting.
-              </p>
+            <ScrollReveal direction="up" distance={30} duration={0.9} delay={50}>
+              <div className="py-10 border-b border-[#E8DCCF]/60 text-center">
+                <div className="flex items-center justify-center gap-2 mb-2">
+                  <Sparkles className="w-4 h-4 text-[#B58D3D]" />
+                  <span className="text-xs uppercase tracking-[0.25em] text-[#B58D3D] font-semibold">
+                    Suggested Color Palette
+                  </span>
+                </div>
+                <p className="text-xs text-[#7A6E5F] max-w-md mx-auto mb-6">
+                  We encourage muted botanicals, soft pastels, and champagne tones to harmonize with the garden setting.
+                </p>
 
-              {/* Visual Color Circles */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 max-w-3xl mx-auto">
-                {dressCode.palette.map((swatch, idx) => (
-                  <div
-                    key={idx}
-                    className="flex flex-col items-center p-3 bg-[#FAF7F2] rounded-xl border border-[#E8DCCF]/60 hover:shadow-md transition-shadow"
-                  >
-                    <div
-                      className="w-12 h-12 rounded-full border border-black/10 shadow-inner mb-2"
-                      style={{ backgroundColor: swatch.color }}
-                    />
-                    <span className="font-serif text-sm font-medium text-[#3E342B]">
-                      {swatch.name}
-                    </span>
-                    <span className="text-[10px] text-[#8C7A6B] mt-0.5">
-                      {swatch.note}
-                    </span>
-                  </div>
-                ))}
-              </div>
-
-              {/* Colors to Avoid Notice */}
-              <div className="mt-8 p-4 bg-[#FBEFEF]/70 border border-[#EAC5C5] rounded-xl max-w-2xl mx-auto text-left">
-                <span className="text-xs uppercase tracking-wider font-semibold text-[#8B3632] block">
-                  Kindly Note: Colors to Avoid
-                </span>
-                <ul className="text-xs text-[#6B3230] mt-1 space-y-0.5 list-disc list-inside">
-                  {dressCode.colorsToAvoid.map((color, idx) => (
-                    <li key={idx}>{color}</li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            {/* Guest Guidelines & Etiquette */}
-            <div className="pt-8">
-              <h4 className="font-serif text-2xl text-[#3E342B] text-center mb-6">
-                Guest Guidelines &amp; Etiquette
-              </h4>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {dressCode.guidelines.map((guide, idx) => {
-                  const getIcon = (title: string) => {
-                    if (title.toLowerCase().includes('unplugged')) return <Camera className="w-5 h-5 text-[#B58D3D]" />;
-                    if (title.toLowerCase().includes('arrival')) return <Clock className="w-5 h-5 text-[#B58D3D]" />;
-                    if (title.toLowerCase().includes('adult')) return <Users className="w-5 h-5 text-[#B58D3D]" />;
-                    return <Heart className="w-5 h-5 text-[#B58D3D]" />;
-                  };
-
-                  return (
+                {/* Visual Color Circles */}
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 max-w-3xl mx-auto">
+                  {dressCode.palette.map((swatch, idx) => (
                     <div
                       key={idx}
-                      className="flex items-start gap-4 p-4 rounded-xl bg-[#FAF7F2] border border-[#E8DCCF]/50"
+                      className="flex flex-col items-center p-3 bg-[#FAF7F2] rounded-xl border border-[#E8DCCF]/60 hover:shadow-md transition-shadow"
                     >
-                      <div className="p-2.5 rounded-full bg-white border border-[#C5A059]/20 shadow-sm shrink-0">
-                        {getIcon(guide.title)}
-                      </div>
-                      <div>
-                        <h5 className="font-serif text-base font-semibold text-[#3E342B] mb-1">
-                          {guide.title}
-                        </h5>
-                        <p className="text-xs sm:text-sm text-[#5C4D3E] leading-relaxed">
-                          {guide.description}
-                        </p>
-                      </div>
+                      <div
+                        className="w-12 h-12 rounded-full border border-black/10 shadow-inner mb-2"
+                        style={{ backgroundColor: swatch.color }}
+                      />
+                      <span className="font-serif text-sm font-medium text-[#3E342B]">
+                        {swatch.name}
+                      </span>
+                      <span className="text-[10px] text-[#8C7A6B] mt-0.5">
+                        {swatch.note}
+                      </span>
                     </div>
-                  );
-                })}
+                  ))}
+                </div>
+
+                {/* Colors to Avoid Notice */}
+                <div className="mt-8 p-4 bg-[#FBEFEF]/70 border border-[#EAC5C5] rounded-xl max-w-2xl mx-auto text-left">
+                  <span className="text-xs uppercase tracking-wider font-semibold text-[#8B3632] block">
+                    Kindly Note: Colors to Avoid
+                  </span>
+                  <ul className="text-xs text-[#6B3230] mt-1 space-y-0.5 list-disc list-inside">
+                    {dressCode.colorsToAvoid.map((color, idx) => (
+                      <li key={idx}>{color}</li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-            </div>
+            </ScrollReveal>
+
+            {/* Guest Guidelines & Etiquette */}
+            <ScrollReveal direction="up" distance={30} duration={0.9} delay={50}>
+              <div className="pt-8">
+                <h4 className="font-serif text-2xl text-[#3E342B] text-center mb-6">
+                  Guest Guidelines &amp; Etiquette
+                </h4>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {dressCode.guidelines.map((guide, idx) => {
+                    const getIcon = (title: string) => {
+                      if (title.toLowerCase().includes('unplugged')) return <Camera className="w-5 h-5 text-[#B58D3D]" />;
+                      if (title.toLowerCase().includes('arrival')) return <Clock className="w-5 h-5 text-[#B58D3D]" />;
+                      if (title.toLowerCase().includes('adult')) return <Users className="w-5 h-5 text-[#B58D3D]" />;
+                      return <Heart className="w-5 h-5 text-[#B58D3D]" />;
+                    };
+
+                    return (
+                      <div
+                        key={idx}
+                        className="flex items-start gap-4 p-4 rounded-xl bg-[#FAF7F2] border border-[#E8DCCF]/50"
+                      >
+                        <div className="p-2.5 rounded-full bg-white border border-[#C5A059]/20 shadow-sm shrink-0">
+                          {getIcon(guide.title)}
+                        </div>
+                        <div>
+                          <h5 className="font-serif text-base font-semibold text-[#3E342B] mb-1">
+                            {guide.title}
+                          </h5>
+                          <p className="text-xs sm:text-sm text-[#5C4D3E] leading-relaxed">
+                            {guide.description}
+                          </p>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </ScrollReveal>
           </div>
         </ScrollReveal>
       </div>

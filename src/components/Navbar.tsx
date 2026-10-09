@@ -85,21 +85,21 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           {/* Zone 3: Actions & Mobile Hamburger (3 lines) */}
           <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-            {/* Desktop / Tablet: Quick Envelope re-open */}
+            {/* Desktop / Tablet: Quick Envelope re-open (hidden on mobile to keep mobile header clean) */}
             <button
               onClick={onReopenEnvelope}
               title="View Invitation Envelope"
-              className="p-2 text-[#7A6E5F] hover:text-[#3E342B] hover:bg-white/70 rounded-full transition-colors border border-[#C5A059]/20"
+              className="hidden md:inline-flex p-2 text-[#7A6E5F] hover:text-[#3E342B] hover:bg-white/70 rounded-full transition-colors border border-[#C5A059]/20"
               aria-label="View Invitation Envelope"
             >
               <MailOpen className="w-4 h-4 text-[#B58D3D]" />
             </button>
 
-            {/* Background Audio toggle */}
+            {/* Background Audio toggle (hidden on small mobile, floating music widget is at bottom-left) */}
             <button
               onClick={onToggleMusic}
               title={isPlayingMusic ? 'Mute romantic harp music' : 'Play romantic harp music'}
-              className={`p-2 rounded-full border transition-colors ${
+              className={`hidden sm:inline-flex p-2 rounded-full border transition-colors ${
                 isPlayingMusic
                   ? 'bg-[#EED7CF]/50 text-[#6C5046] border-[#C5A059]/40'
                   : 'text-[#7A6E5F] hover:text-[#3E342B] hover:bg-white/70 border-[#C5A059]/20'
@@ -135,10 +135,11 @@ export const Navbar: React.FC<NavbarProps> = ({
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden flex flex-col justify-center items-center gap-[5px] w-10 h-10 p-2 rounded-lg bg-[#FFFDF9]/90 border border-[#C5A059]/40 text-[#4A3E31] hover:bg-white shadow-xs focus:outline-none transition-colors"
+              className="lg:hidden flex flex-col justify-center items-center gap-[5px] w-10 h-10 p-2 rounded-lg bg-[#FFFDF9] border border-[#C5A059]/40 text-[#4A3E31] hover:bg-white shadow-xs focus:outline-none transition-all active:scale-95"
               aria-label={mobileMenuOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
               aria-expanded={mobileMenuOpen}
             >
+              {/* 3 lines for hamburger */}
               <span
                 className={`block w-5 h-[2px] bg-[#4A3E31] transition-transform duration-300 origin-center ${
                   mobileMenuOpen ? 'rotate-45 translate-y-[7px]' : ''

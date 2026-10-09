@@ -2,7 +2,7 @@ import React from 'react';
 import { WeddingConfig } from '../config/weddingData';
 import { BotanicalCorner, FloralDivider, Butterfly } from './BotanicalElements';
 import { ScrollReveal } from './ScrollReveal';
-import { Calendar, MapPin, Sparkles } from 'lucide-react';
+import { Calendar, MapPin, Heart } from 'lucide-react';
 
 interface OurStorySectionProps {
   config: WeddingConfig;
@@ -48,10 +48,10 @@ export const OurStorySection: React.FC<OurStorySectionProps> = ({ config }) => {
                     isEven ? 'md:flex-row-reverse' : ''
                   }`}
                 >
-                  {/* Center Timeline Node with gold bloom */}
+                  {/* Center Timeline Node with gold heart */}
                   <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 items-center justify-center">
                     <div className="w-8 h-8 rounded-full bg-[#FFFDF9] border border-[#C5A059] flex items-center justify-center shadow-md">
-                      <div className="w-3 h-3 rounded-full bg-[#B58D3D]" />
+                      <Heart className="w-3.5 h-3.5 text-[#B58D3D] fill-[#B58D3D]" />
                     </div>
                   </div>
 
@@ -78,8 +78,8 @@ export const OurStorySection: React.FC<OurStorySectionProps> = ({ config }) => {
                             <MapPin className="w-3.5 h-3.5 text-[#B58D3D]" />
                             {milestone.location}
                           </span>
-                          <span className="flex items-center gap-1 text-[#B58D3D]">
-                            <Sparkles className="w-3 h-3" />
+                          <span className="flex items-center gap-1 text-[#B58D3D] font-semibold">
+                            <Heart className="w-3.5 h-3.5 fill-[#B58D3D] text-[#B58D3D]" />
                             <span>Chapter {idx + 1}</span>
                           </span>
                         </div>
@@ -102,11 +102,15 @@ export const OurStorySection: React.FC<OurStorySectionProps> = ({ config }) => {
                   {/* Text Column */}
                   <div className={`w-full md:w-1/2 text-center ${isEven ? 'md:text-right' : 'md:text-left'}`}>
                     <div className="max-w-md mx-auto">
-                      <div className={`flex items-center gap-2 justify-center ${isEven ? 'md:justify-end' : 'md:justify-start'} mb-2`}>
-                        <Calendar className="w-3.5 h-3.5 text-[#B58D3D]" />
-                        <span className="text-xs uppercase tracking-widest text-[#B58D3D] font-semibold">
-                          {milestone.date}
+                      <div className={`flex items-center gap-2 justify-center ${isEven ? 'md:justify-end' : 'md:justify-start'} mb-2.5 flex-wrap`}>
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#FAF3EC] border border-[#DFC488]/40 text-xs font-semibold text-[#B58D3D] tracking-wider uppercase shadow-xs">
+                          <Heart className="w-3.5 h-3.5 fill-[#B58D3D] text-[#B58D3D]" />
+                          <span>Chapter {idx + 1}</span>
                         </span>
+                        <div className="inline-flex items-center gap-1 text-xs uppercase tracking-widest text-[#7A6E5F] font-medium">
+                          <Calendar className="w-3 h-3 text-[#B58D3D]" />
+                          <span>{milestone.date}</span>
+                        </div>
                       </div>
 
                       <h3 className="font-serif text-2xl sm:text-3xl text-[#3E342B] font-medium mb-3">
