@@ -20,7 +20,7 @@ import { GiftGuideSection } from './components/GiftGuideSection';
 import { FooterSection } from './components/FooterSection';
 import { AudioPlayerWidget } from './components/AudioPlayerWidget';
 
-const CONFIG_STORAGE_KEY = 'aura_bloom_wedding_config_manila_v1';
+const CONFIG_STORAGE_KEY = 'aura_bloom_wedding_config_kazandra_jhobet_novaliches_v1';
 
 export default function App() {
   // Main wedding configuration state with local storage persistence
@@ -29,11 +29,9 @@ export default function App() {
       const stored = localStorage.getItem(CONFIG_STORAGE_KEY);
       if (stored) {
         const parsed = JSON.parse(stored);
-        // Ensure not using old California defaults
-        if (parsed?.venues?.ceremony?.cityState?.includes('Carmel')) {
-          return initialWeddingConfig;
+        if (parsed?.couple?.brideFirstName === 'Kazandra') {
+          return parsed;
         }
-        return parsed;
       }
     } catch {
       // fallback to initial

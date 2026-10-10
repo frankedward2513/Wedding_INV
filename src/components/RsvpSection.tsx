@@ -376,7 +376,7 @@ export const RsvpSection: React.FC<RsvpSectionProps> = ({ config }) => {
                 <div className="relative">
                   <textarea
                     rows={3}
-                    placeholder="Leave a blessing or sweet memory for Eleanor &amp; Julian..."
+                    placeholder={`Leave a blessing or sweet memory for ${config.couple.displayName}...`}
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     className="w-full px-4 py-3 bg-[#FAF7F2] border border-[#DFC488]/50 rounded-xl text-[#3E342B] placeholder-[#9C8F80] text-sm focus:outline-none focus:ring-2 focus:ring-[#C5A059]/40 resize-none"
